@@ -31,7 +31,7 @@ const fetchTwitterAva = async (twitterUsername) => {
   const navigationPromise = page.waitForNavigation({
     waitUntil: "domcontentloaded",
   });
-  await page.setDefaultNavigationTimeout(300000);
+  // await page.setDefaultNavigationTimeout(300000);
   await page.goto(`https://twitter.com/${twitterUsername}`);
   await navigationPromise;
   await page.waitForSelector('a[href$="/photo"] img[src]');
