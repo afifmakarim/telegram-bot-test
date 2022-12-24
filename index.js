@@ -49,7 +49,12 @@ const getUpdates = async () => {
       "*/30 * * * * *",
       async function () {
         // This function will be executed every hour
-        console.log("Running the job at " + new Date());
+        console.log(
+          "Running the job at " +
+            new Date().toLocaleString("en-US", {
+              timeZone: "Asia/Bangkok",
+            })
+        );
 
         const checkIfUpdates = await fetchTwitterAva(
           process.env.TWITTER_USERNAME
