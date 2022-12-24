@@ -26,7 +26,7 @@ const fetchTwitterAva = async (twitterUsername) => {
   const browser = await Puppeteer.launch({
     executablePath: "/usr/bin/chromium-browser",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    headless: false,
+    // headless: false,
   });
   const page = await browser.newPage();
   await page.setDefaultNavigationTimeout(60000);
@@ -81,6 +81,7 @@ const getUpdates = async () => {
   } catch (error) {
     console.log("ERROR ", error);
     bot.telegram.sendMessage(process.env.TELEGRAM_USER, "Botnya ada error", {});
+    process.exit();
   }
 };
 
