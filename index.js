@@ -30,7 +30,7 @@ const fetchTwitterAva = async (twitterUsername) => {
   const page = await browser.newPage();
   await page.setDefaultNavigationTimeout(60000);
   await page.goto(`https://twitter.com/${twitterUsername}`);
-  await page.waitForSelector('a[href$="/photo"] img[src]');
+  await page.waitForSelector('a[href$="/photo"] img[src]', { timeout: 60000 });
   const url = await page.evaluate(
     () => document.querySelector('a[href$="/photo"] img').src
   );
