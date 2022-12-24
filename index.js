@@ -46,7 +46,7 @@ const getUpdates = async () => {
     console.log("current image ", currentImage);
 
     const checkingProfilePhoto = new cron.CronJob(
-      "*/30 * * * * *",
+      "0 * * * * *",
       async function () {
         // This function will be executed every hour
         console.log(
@@ -79,6 +79,7 @@ const getUpdates = async () => {
     checkingProfilePhoto.start();
   } catch (error) {
     console.log("ERROR ", error);
+    bot.telegram.sendMessage(process.env.TELEGRAM_USER, "Botnya ada error", {});
   }
 };
 
