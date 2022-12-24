@@ -24,13 +24,10 @@ const bot = new Telegraf(process.env.TELEGRAM_SECRET);
 // });
 const fetchTwitterAva = async (twitterUsername) => {
   const browser = await Puppeteer.launch({
-    executablePath: "/usr/bin/chromium-browser",
+    // executablePath: "/usr/bin/chromium-browser",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
-  // const navigationPromise = page.waitForNavigation({
-  //   waitUntil: "domcontentloaded",
-  // });
   await page.setDefaultNavigationTimeout(60000);
   await page.goto(`https://twitter.com/${twitterUsername}`);
   await page.waitForSelector('a[href$="/photo"] img[src]');
