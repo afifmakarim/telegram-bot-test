@@ -24,7 +24,7 @@ const bot = new Telegraf(process.env.TELEGRAM_SECRET);
 // });
 const fetchTwitterAva = async (twitterUsername) => {
   const browser = await Puppeteer.launch({
-    // executablePath: "/usr/bin/chromium-browser",
+    executablePath: "/usr/bin/chromium-browser",
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
