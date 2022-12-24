@@ -47,7 +47,7 @@ const getUpdates = async () => {
     console.log("current image ", currentImage);
 
     const checkingProfilePhoto = new cron.CronJob(
-      "0 * * * * *",
+      "0 * * * *",
       async function () {
         // This function will be executed every hour
         console.log(
