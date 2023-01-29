@@ -9,9 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.2.6",
     "cron": "^2.1.0",
     "dotenv": "^16.0.3",
+    "ig-scraper": "^2.1.0",
     "puppeteer": "^19.4.1",
+    "scraper-instagram": "^1.0.17",
     "telegraf": "^4.11.2"
   }
 }
