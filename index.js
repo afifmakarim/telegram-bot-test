@@ -58,7 +58,7 @@ const getUpdates = async () => {
     currentDataCount = data.data.data.user.edge_owner_to_timeline_media.count;
     console.log("current count ", currentDataCount);
 
-    const checkingNewData = new cron.CronJob("0 * * * *", async function () {
+    const checkingNewData = new cron.CronJob("0 */4 * * *", async function () {
       // This function will be executed every hour
       console.log(
         "Running the job at " +
@@ -93,15 +93,17 @@ const getUpdates = async () => {
         const filteredArray =
           checkIfUpdates.data.data.user.edge_owner_to_timeline_media.edges.filter(
             (object) =>
-              object.node.edge_media_to_caption.edges[0].node.text.includes(
-                "laptop"
-              )
+              object.node.edge_media_to_caption.edges[0]?.node.text
+                .toLowerCase()
+                .includes("intel")
           );
+
+        console.log("filtered array ", filteredArray);
 
         filteredArray.forEach(async (item) => {
           bot.telegram.sendMessage(
             process.env.TELEGRAM_USER,
-            `https://www.instagram.com/p/${item.shortcode}`,
+            `https://www.instagram.com/p/${item.node.shortcode}`,
             {}
           );
         });
