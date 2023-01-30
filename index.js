@@ -119,7 +119,6 @@ const getUpdates = async () => {
     }
 
     bot.telegram.sendMessage(process.env.TELEGRAM_USER, "Botnya ada error", {});
-    process.exit();
   }
 };
 
