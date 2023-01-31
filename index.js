@@ -52,7 +52,11 @@ const getUpdates = async () => {
   try {
     let currentDataCount;
     const data = await getUserPosts(process.env.IG_USER);
+
     console.log("initial data ", data);
+    if (!data) {
+      console.log("gagal hit api ");
+    }
 
     // total data
     currentDataCount = data.data.data.user.edge_owner_to_timeline_media.count;
@@ -68,6 +72,11 @@ const getUpdates = async () => {
       );
 
       const checkIfUpdates = await getUserPosts(process.env.IG_USER);
+
+      if (!checkIfUpdates) {
+        console.log("gagal hit api ");
+      }
+
       console.log("comparation data ", checkIfUpdates);
       if (
         currentDataCount ===
